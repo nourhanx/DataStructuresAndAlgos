@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Part1/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/Part1/Arrays/Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataStructuresAndAlgos.iml" filepath="$PROJECT_DIR$/DataStructuresAndAlgos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/LinkedLists/LinkedLists.iml" filepath="$PROJECT_DIR$/Part1/LinkedLists/LinkedLists.iml" />
       <module fileurl="file://$PROJECT_DIR$/Part1/Part1.iml" filepath="$PROJECT_DIR$/Part1/Part1.iml" />
     </modules>
   </component>
