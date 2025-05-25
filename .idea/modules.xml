@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Part1/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/Part1/Arrays/Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataStructuresAndAlgos.iml" filepath="$PROJECT_DIR$/DataStructuresAndAlgos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/Part1.iml" filepath="$PROJECT_DIR$/Part1/Part1.iml" />
+    </modules>
+  </component>
+</project>
