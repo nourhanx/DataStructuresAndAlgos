@@ -4,8 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Part1/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/Part1/Arrays/Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataStructuresAndAlgos.iml" filepath="$PROJECT_DIR$/DataStructuresAndAlgos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/HashTables/HashTables.iml" filepath="$PROJECT_DIR$/Part1/HashTables/HashTables.iml" />
       <module fileurl="file://$PROJECT_DIR$/Part1/LinkedLists/LinkedLists.iml" filepath="$PROJECT_DIR$/Part1/LinkedLists/LinkedLists.iml" />
       <module fileurl="file://$PROJECT_DIR$/Part1/Part1.iml" filepath="$PROJECT_DIR$/Part1/Part1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/Queues/Queues.iml" filepath="$PROJECT_DIR$/Part1/Queues/Queues.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Randoms/Randoms.iml" filepath="$PROJECT_DIR$/Randoms/Randoms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/Sorting/Sorting.iml" filepath="$PROJECT_DIR$/Part1/Sorting/Sorting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Part1/Stacks/Stacks.iml" filepath="$PROJECT_DIR$/Part1/Stacks/Stacks.iml" />
     </modules>
   </component>
 </project>

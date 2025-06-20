@@ -1,4 +1,17 @@
+import java.lang.annotation.IncompleteAnnotationException;
+import java.util.NoSuchElementException;
+
 public class LinkedList {
+    private static class Node {
+        private final int value;
+        private Node next;
+
+        Node(int val){
+            value = val;
+            next = null;
+        }
+    }
+
     private  Node first = null;
     private Node last = null;
     private int size;
@@ -8,91 +21,93 @@ public class LinkedList {
         size = 1;
     }
 
+    private boolean isEmpty(){
+        return first == null ;
+    }
+
     public void addFirst(int val) {
-        Node temp = new Node(val);
-        temp.setNext(first);
-        first = temp;
+        Node node = new Node(val);
         size++;
+        if (isEmpty()) {
+            first = last = node;
+            return;
+        }
+        node.next = first;
+        first = node;
     }
 
     public void addLast(int val) {
         size++;
         Node node = new Node(val);
-        if (first == null) {
+        if (isEmpty()) {
             first = last = node;
             return;
         }
-
-        last.setNext(node);
+        last.next = node;
         last = node;
     }
 
-    public void deleteFirst() {
-        size--;
-        if (first == null) {
-            return;
+    private Node getPrevious(Node node) {
+        Node curr = first;
+        while (curr != null) {
+            if (curr.next == node) {
+                return curr;
+            }
+            curr = curr.next;
         }
-        first = first.getNext();
+        return null;
     }
-
-    public void deleteLast(){
-        if (first == null) {
-            return;
+    public void deleteFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
-
         size--;
-
         if (first == last) {
             first = last = null;
             return;
         }
-        Node temp = first;
-        Node curr = temp;
+        Node second = first.next;
+        first.next = null;
+        first = second;
+    }
 
-        while (temp.getNext() != null) {
-            curr = temp;
-            temp = temp.getNext();
+    public void deleteLast(){
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
-        last = curr;
-        curr.setNext(null);
+        size--;
+        if (first == last) {
+            first = last = null;
+            return;
+        }
+        last = getPrevious(last);
+        last.next = null;
     }
 
     public boolean contains(int val) {
-        if (first == null) {
-            return false;
-        }
-        Node temp = first;
-        while (temp != null) {
-            if (temp.getValue() == val)
-                return true;
-            temp = temp.getNext();
-        }
-        return false;
+        return indexOf(val) != -1;
     }
 
     public int indexOf(int val) {
-        if (first == null) {
-            return -1;
-        }
-        Node temp = first;
+        Node curr = first;
         int index = 0;
-        while (temp != null) {
-            if (temp.getValue() == val)
+        while (curr != null) {
+            if (curr.value == val)
                 return index;
-            temp = temp.getNext();
+            curr = curr.next;
             index++;
         }
         return -1;
     }
 
     public void print() {
-        if (first == null) {
+        if (isEmpty()) {
             return;
         }
         Node temp = first;
         while (temp != null) {
-            System.out.println(temp.getValue());
-            temp = temp.getNext();
+            System.out.println(temp.value);
+            temp = temp.next;
         }
     }
 
@@ -102,13 +117,109 @@ public class LinkedList {
 
     public int[] toArray() {
         int[] arr = new int[size];
-        Node temp = first;
+        Node curr = first;
         int index = 0;
-        while(temp != null) {
-            arr[index] = temp.getValue();
-            temp = temp.getNext();
-            index++;
+        while(curr != null) {
+            arr[index++] = curr.value;
+            curr = curr.next;
         }
         return arr;
     }
+
+    public void reverse() {
+        if (isEmpty()) {
+            return;
+        }
+
+        Node previous = first;
+        Node current = previous.next;
+        Node next;
+
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        last = first;
+        last.next = null;
+        first = previous;
+    }
+
+    public int getKthFromTheEnd(int k) {
+        if (isEmpty()) throw new IllegalStateException();
+        if (k > size) throw new IllegalArgumentException();
+
+        Node l;
+        Node m;
+
+        l = first;
+        m = first;
+        for (int i = 0; i < k - 1; i++) {
+            m = m.next;
+        }
+
+        // now we have the two pointers positioned correctly
+
+        while (m.next != null) {
+            l = l.next;
+            m = m.next;
+        }
+        return l.value;
+
+    }
+
+    public int[] printMiddle() {
+        // 4   5   6   7   8   8   7   8   9   6
+        // ^^
+        //     ^   ^
+        //         ^       ^
+        //             ^           ^
+        //                 ^                ^
+        if (isEmpty()) throw new IllegalStateException();
+        Node middle, last;
+        middle = last = first;
+
+        while (last != this.last && last.next != this.last ) {
+            middle = middle.next;
+            last = last.next.next;
+        }
+
+        if (last == this.last) return new int[]{middle.value};
+        else return new int[]{middle.value, middle.next.value};
+    }
+    public boolean hasLoop() {
+        Node slow, fast;
+        slow = fast = first;
+
+        while (fast.next!= null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
